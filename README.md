@@ -1,16 +1,16 @@
 # Object_Tracking_and_Time_To_Collision_Estimation
 <img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/demo.png"/>
-This is the second project of Sensor Fusion Nanodegree of Udacity. I fused camera and LiDAR measurements from KITTI dataset to detect, track objects in 3D space, and estimate time-to-collision. First of all, I processed image by YOLOv3 to identy and detect object. Based on the bounding box found by YOLOv3, I developed a way to match 3D objects over time by using keypoint correspondences. Next, I used two different methods to calculate calculate time-to-collision(TTC), LiDAR based and camera based TTC.
+This is the second project of Sensor Fusion Nanodegree of Udacity. I fused camera and LiDAR measurements from KITTI dataset to detect, track objects in 3D space, and estimate time-to-collision. First of all, I processed image by YOLOv3 to detect and classify objects. The following figure shows the result. Based on the bounding box found by YOLOv3, I developed a way to track 3D objects over time by keypoint correspondences. Next, I used two different methods to calculate time-to-collision(TTC), LiDAR based and camera based TTC. The structure of the environment is built by the main instructor, Andreas Haja.
+<img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/object classification.png"/>
 
 ## LiDAR Based TTC
-First of all, I projected the 3D LiDAR points of preceding car into 2D image plane by using homogeneous coordinates. Next, I distributed the 3D LiDAR points to the corresponding bounding box. Finally, based on the correspondence bounding box in different frames, I computed the TTC based on Lidar measurements.
+I projected the 3D LiDAR points of preceding car into 2D image plane by using homogeneous coordinates. The projection is shown in the following figure Next, I distributed the 3D LiDAR points to the corresponding bounding box. Finally, I computed TTC based on the closest 3D LiDAR points in the correspondence bounding box of different frames.
 <img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/Lidar_to_camera.png"/>
 
 ## Camera Based TTC
-
-The structure of the environment is built by the main instructor, Andreas Haja.
-
-
+I used various combinations of detector/descriptor to find keypoints in each image and match these keypoints between different frames. The following figures show the keypoints detection by FAST detector and ORB descriptor as well as keypoints matching between two images. Next, I distributed these keypoints to the corresponding bounding box found by YOLOv3. Finally, I computed the TTC based on the distance of each keypoint in each frame.
+<img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/FAST_detector.png"/>
+<img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/match.png"/>
 
 ## Usage
 Clone the package.
@@ -56,4 +56,5 @@ Run the executable
 	- Enable or disable the visualization.
 - `bLimitKpts` : `False` (disable), `True` (enable)
 	- Limiting keypoint display results. Not recommend but useful for debug.
+
 
