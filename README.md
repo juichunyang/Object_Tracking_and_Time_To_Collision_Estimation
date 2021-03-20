@@ -1,4 +1,4 @@
-# Object_Tracking_and_Time_To_Collision_Estimation
+# Object Tracking and Time-To-Collision Estimation
 <img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/demo.png"/>
 This is the second project of Sensor Fusion Nanodegree of Udacity. I fused camera and LiDAR measurements from KITTI dataset to detect, track objects in 3D space, and estimate time-to-collision. First of all, I processed image by YOLOv3 to detect and classify objects. The following figure shows the result. Based on the bounding box found by YOLOv3, I developed a way to track 3D objects over time by keypoint correspondences. Next, I used two different methods to calculate time-to-collision(TTC), LiDAR based and camera based TTC. The structure of the environment is built by the main instructor, Andreas Haja.
 <img src="https://github.com/CuteJui/Object_Tracking_and_Time_To_Collision_Estimation/blob/main/readme_resource/object classification.png"/>
